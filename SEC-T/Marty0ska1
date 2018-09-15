@@ -1,0 +1,39 @@
+//Solution to Marty0sk1 (type: Cryptography) , in the SEC-T CTF 2018
+
+Category: Crypto
+Challenge Points: 51
+Solves: 60+
+----------------------------------------------------------------------------------------------------
+
+Service: nc crypto.sect.ctf.rocks 2222
+
+As soon as you connect to the service through your terminal,
+you are given three numbers: p, g, and g^x. They demand x saying:
+
+'Gimme exponent pl0x'
+p=12248847.....
+g=2
+g^x=56359320624......
+:(you have to enter x here)
+
+//the value of g^x keeps changing everytime you reconnect to the service
+
+Now as the hint to the problem read 'discrete logarithms are hard', we guess this is a DLP(Discrete logarithm problem).
+
+The discrete logarithm problem is to find the Exponent in the expression:
+Base^Exponent = Power (mod Modulus)
+
+Here, our Base is g (here 2), Modulus is p, and Power is g^x value.
+
+You could find x manually (xD) or just use any online DLP Calculator. Eg: https://www.alpertron.com.ar/DILOG.HTM
+(Tip: if you get a value like 3360 + 3930 k, we just take the value before the '+' eg. here we would take 3360)
+
+Here the Pohlig-Hellman algorithm is implemented.
+
+Once you get the value of x, you enter it. And boom!
+Here's your flag:
+SECT{Ru$$ian_D0LLZ_h0lDs_TH3_S3cR3T}
+
+Yes, Matryoshka the Russian Doll.
+
+
